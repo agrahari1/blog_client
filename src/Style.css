@@ -1,0 +1,150 @@
+ul {
+  list-style-type: none;
+  /* margin-left: 100px; */
+  margin-top: 80px;
+  padding: 0px;
+  margin-left: 180px;
+  /* background-color: #333; */
+  overflow: hidden;
+
+  background-color: light;
+  /* color: rgb(3, 3, 3); */
+  font-size: 20px;
+  overflow: hidden;
+  /* background-color: #fbf5f5; */
+  /* position: fixed; Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+}
+li {
+  float: left;
+  margin: 20px;
+  color: rgb(20, 18, 16);
+  font-style: normal;
+
+  /* border-right:1px solid #af2b2b; */
+}
+/* li a:hover:not(.active) {
+  background-color: #111;
+} */
+.home,
+.about,
+.news,
+.contact {
+  /* background-color: #04AA6D; */
+  text-decoration: none;
+  color: black;
+  
+
+  /* margin: 40px; */
+}
+/* .container {
+  display: inline;
+  margin-top: 40px;
+  height: 20px;
+  font-size: 30px;
+} */
+
+ .main-login {
+ height: 50vh;
+ width: 25%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap:30px;
+  /* align-items: "center"; */
+  background-color: "#555555";
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  background-color:lightgray;
+} 
+
+.btnsub {
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background-color: cornflowerblue;
+}
+/* .main-loin{
+  display: flex;
+       height: 500px;
+       width: 25%;
+       justify-content: center;
+       align-items: center;
+      background-color: #555555;
+      border-radius: 20px;
+      margin-top:150px;
+} */
+/* .sgn-fgt{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 200px;
+} */
+.flex-container{
+  display: flex;
+  background-color: #f1f1f1;
+  gap:40px;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: small; 
+  background-color:lightgray;
+}
+form{
+  width:100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"]{
+  height: 45px;
+  width: 100%;
+  border: 0.5px solid gray;
+  border-radius: 8px;
+  margin:8px;
+}
+
+.center{
+  display: grid;
+  place-items: center;
+}
+.text-danger{
+  color: red;
+}
+
+.form-main{
+  background-color: lightgray;
+  border-radius: 10px;
+  width: 50vw;
+  justify-content: center;
+  margin: 60px;
+  padding: 30px;
+  color: black;
+}
+.main-card{
+  height: 5%;
+}
+*{
+  font-family: sans-serif , Verdana;
+}
+.clearfix{
+  font-size: larger;
+  margin: 90px;
+  text-decoration: underline;
+}
+.float-start ,.float-end{
+  text-decoration: underline;
+}
+.cd{
+  border-style: none;
+}
+.cd-car{
+  border-style: none;
+  justify-content: center;
+  margin-top: 100px;
+}
+/* body{
+  background:#eceff1 ;
+} */
