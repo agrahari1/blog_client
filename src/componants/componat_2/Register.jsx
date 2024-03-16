@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -13,11 +13,12 @@ import {
   Col,
 } from "reactstrap";
 // import { signUp } from "../services/User-server";
-import { Link } from "react-router-dom";
-import {toast} from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -28,66 +29,46 @@ export default function Register() {
     errors: {},
     isError: false,
   });
+
   const handleChange = (event, field) => {
     //dynamic setting value
-    setData({ ...data, 
-      [field]: event.target.value
-     }
-      );
+    setData({ ...data, [field]: event.target.value });
   };
-
-  // reset the form
-  // const resetData=()=>{
-  //     setData({
-  //         name:'',
-  //         email:'',
-  //         password:''
-  //     })
-  // }
-
-  // submit the form
-  //   }
-  // }
-
   const submitForm = async (event) => {
-    
     try {
       event.preventDefault();
-     
-      if(error.isError){
-        toast.error("Form data is invalid,currect first then submit")
-      }
-      
       const names = data?.name?.split(" ");
       const payload = {
-        fname : names?.[0] ?? "",
-        lname : names?.[1] ?? "",
-        email : data?.email,
-        password : data?.password
-      }
-     
-      const res= await axios.post("http://localhost:5000/signup", payload);
-      //console.log('hii')
+        // fname: names?.[0] ?? "",
+        name: names?.[0] ?? "",
+        email: data?.email,
+        password: data?.password,
+      };
+
+      const res = await axios.post("http://localhost:5000/signup", payload);
       console.log(res)
-      toast.success("User is register successfully !");
-      setData({
-        name: "",
-        email: "",
-        password: ""
-      })
+      if (res.data.success) {
+        toast.success(res?.data?.message);
+        sessionStorage.setItem("email", payload.email);
+        navigate("/verify_otp");
+      }
+      resetForm();
     } catch (error) {
       console.log(error);
-      console.log("Error log")
-      //handle error in proper way
-      setError({
-        errors:error,
-        isError:true
-      })
+      toast.error(error?.response?.data?.message);
     }
   };
-//handle error in proper way
+  //handle error in proper way
 
   // };
+
+  const resetForm = () => {
+    setData({
+      name: "",
+      email: "",
+      password: "",
+    });
+  };
   return (
     <Container>
       <Row className="mt-5">
@@ -103,11 +84,10 @@ export default function Register() {
                   <Label for="name">Enter Name</Label>
                   <Input
                     type="text"
-                    placeholder="Enter here"
+                    placeholder="Enter name"
                     id="name"
                     onChange={(e) => handleChange(e, "name")}
                     value={data.name}
-                    
                   />
                 </FormGroup>
                 {/* email field */}
@@ -115,7 +95,7 @@ export default function Register() {
                   <Label for="email">Enter email</Label>
                   <Input
                     type="email"
-                    placeholder="Enter here"
+                    placeholder="Enter email"
                     id="email"
                     onChange={(e) => handleChange(e, "email")}
                     value={data.email}
@@ -127,14 +107,14 @@ export default function Register() {
                   <Label for="email">Enter password</Label>
                   <Input
                     type="password"
-                    placeholder="Enter here"
+                    placeholder="Enter password"
                     id="password"
                     onChange={(e) => handleChange(e, "password")}
                     value={data.password}
                   />
                 </FormGroup>
                 <Container className="text-center">
-                  <Button outline color="light" type="submit" >
+                  <Button outline color="light" type="submit">
                     Signup
                   </Button>
                   <Button color="secondary" className="ms-2" type="Reset">

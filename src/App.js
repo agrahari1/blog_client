@@ -12,6 +12,9 @@ import Loginform from "./componants/componat_2/Loginform";
 import AddPost from "./componants/post/AddPost";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Sendotp from "./componants/componat_2/Sendotp";
+import Forgetpassword from "./componants/componat_2/Forgetpassword";
+
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
         <Route  path="/signup"  element={<Register />} />
         <Route  path="/loginform"  element={<Loginform />} />
         <Route  path="/addpost"  element={<AddPost />} />
+        <Route  path="/verify_otp"  element={<Sendotp />} />
+        <Route  path="/forgotPassword"  element={<Forgetpassword />} />
+       
       </Routes>
     </BrowserRouter>
   );

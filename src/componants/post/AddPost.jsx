@@ -53,7 +53,7 @@ export default function AddPost() {
       <div className="container">
         <Card className="shadow-lg ">
           <CardBody>
-            {JSON.stringify(post)}
+            {/* {JSON.stringify(post)} */}
             <h3>Whats going in your mind ?</h3>
             <Form onSubmit={createPost}>
               <div className="my-3">

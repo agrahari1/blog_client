@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Button,
@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 
 export default function Loginform() {
+  const navigate = useNavigate();
   const [loginDetail, setLoginDetail] = useState({
     email: "",
     password: "",
@@ -39,23 +40,6 @@ export default function Loginform() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     //console.log(loginDetail);
-    const userData = {
-      email: loginDetail.email,
-      password: loginDetail.password
-    };
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/login",
-        userData
-      );
-      console.log("Login successful!", response.data);
-      console.log(response);
-      toast.success(" Login successfully !");
-    } catch (error) {
-      console.error("Login failed!", error);
-    }
-
-    //validation
 
     if (loginDetail.email.trim() == "") {
       toast.error("User email id is required !!");
@@ -66,6 +50,41 @@ export default function Loginform() {
       toast.error("Password is required !!");
       return;
     }
+
+
+    const userData = {
+      email: loginDetail.email,
+      password: loginDetail.password
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        userData
+      );
+     // console.log("Login successful!", response.data);
+     if(response.data.success){
+      toast.success(response.data.message);
+      navigate("/home");
+      return;
+
+     }
+      //toast.success(" Login successfully !");
+    } catch (error) {
+      console.error("Login failed!", error);
+      toast.error(error?.response?.data?.message);
+    }
+
+    //validation
+
+    // if (loginDetail.email.trim() == "") {
+    //   toast.error("User email id is required !!");
+    //   return;
+    // }
+
+    // if (loginDetail.password.trim() == "") {
+    //   toast.error("Password is required !!");
+    //   return;
+    // }
 
     //submit the data to server to genetate token
   };

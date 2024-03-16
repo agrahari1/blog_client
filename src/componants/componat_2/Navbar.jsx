@@ -34,7 +34,6 @@ export default function Navbarr() {
                 className="me-2 rounded-pill shadow-lg"
                 aria-label="Search"
               />
-
               <Button variant="outline-success rounded ml-3">
                 <Link to="/signup" className="text-dark" >
                   Signup
