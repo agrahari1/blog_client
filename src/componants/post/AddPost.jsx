@@ -12,8 +12,11 @@ import JoditEditor from "jodit-react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import DraftPost from "./DraftPost";
+import { useNavigate } from "react-router-dom";
+
 
 export default function AddPost() {
+  const navigate = useNavigate();
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [categories, setCategories] = useState([]);
@@ -64,6 +67,7 @@ export default function AddPost() {
       console.log(result);
       if (result.data.success) {
         toast.success(result.data.message);
+        navigate('/draftPost');
         return;
       }
     } catch (error) {
@@ -137,7 +141,6 @@ export default function AddPost() {
             </Form>
           </CardBody>
         </Card>
-        
       </div>
     </Container>
   );

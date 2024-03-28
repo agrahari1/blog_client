@@ -43,10 +43,7 @@ export default function Postpageupdate() {
 
   const updatePost = async (event) => {
     event.preventDefault();
-    //console.log(title,description,category)
     try {
-      //console.log();
-      //e.preventde
       const response = await axios.post("http://localhost:5000/updateArtical", {
         id,
         title,
@@ -54,12 +51,17 @@ export default function Postpageupdate() {
         category,
       });
       console.log(response);
-      console.log(response.data.message);
-      alert(response.data.message)
+      console.log(response.data.success);
+      if(response.data.success){
+        alert(response.data.message);
+        navigate('/draftPost')
+      }
+     
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <Container>
       <div className="container">

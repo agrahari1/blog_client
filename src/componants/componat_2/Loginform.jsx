@@ -61,12 +61,11 @@ export default function Loginform() {
         "http://localhost:5000/login",
         userData
       );
-       console.log('data',response.data)
 
      // console.log("Login successful!", response.data);
      if(response.data.success){
       toast.success(response.data.message);
-    const tok = response.data?.data[1].token
+    const tok = response.data?.token
     sessionStorage.setItem("token", tok);
       navigate("/home");
       return;
