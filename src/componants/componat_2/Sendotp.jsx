@@ -41,7 +41,7 @@ export default function Sendotp() {
       );  
       if(response.data.success){
         toast.success(response?.data?.message)
-        navigate("/home");
+        navigate("/loginform");
       
       }   
      // toast.success(response?.data?.message);
@@ -55,9 +55,9 @@ export default function Sendotp() {
 
   //Resend OTP
 
-  const[item,setItem] = useState({
-    item:""
-  })
+  // const[item,setItem] = useState({
+  //   email:""
+  // })
   // const handleChange = (event, field) => {
   //   setItem({
   //     [field]: event.target.value,
@@ -66,8 +66,9 @@ export default function Sendotp() {
   const handleChangeResendOtp = async (event)=>{
     event.preventDefault();
     const itenData = {
-        email:sessionStorage.getItem("email"),
-        otp:item.otp,
+        //email:sessionStorage.getItem("email"),
+       email: sessionStorage.getItem("email")
+        //otp:item.otp,
     }
     try {
         const result = await axios.post( "http://localhost:5000/resend_otp",itenData );

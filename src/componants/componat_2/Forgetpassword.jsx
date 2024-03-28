@@ -36,6 +36,7 @@ export default function Forgetpassword() {
       );
       if (result.data.success) {
         toast.success(result.data.message);
+        sessionStorage.setItem("email", userData.email);
         navigate("/verify_otp");
         return;
       }

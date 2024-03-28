@@ -61,32 +61,21 @@ export default function Loginform() {
         "http://localhost:5000/login",
         userData
       );
+       console.log('data',response.data)
+
      // console.log("Login successful!", response.data);
      if(response.data.success){
       toast.success(response.data.message);
+    const tok = response.data?.data[1].token
+    sessionStorage.setItem("token", tok);
       navigate("/home");
       return;
 
      }
-      //toast.success(" Login successfully !");
     } catch (error) {
       console.error("Login failed!", error);
       toast.error(error?.response?.data?.message);
     }
-
-    //validation
-
-    // if (loginDetail.email.trim() == "") {
-    //   toast.error("User email id is required !!");
-    //   return;
-    // }
-
-    // if (loginDetail.password.trim() == "") {
-    //   toast.error("Password is required !!");
-    //   return;
-    // }
-
-    //submit the data to server to genetate token
   };
 
   return (
@@ -99,8 +88,8 @@ export default function Loginform() {
           }}
         >
           <Card className="shadow-lg" color="dark " inverse>
-            <CardHeader>
-              <h3>Login here !!</h3>
+            <CardHeader className="text-center mt-5">
+              <h3>Please Login to Create Blog !!</h3>
             </CardHeader>
 
             <CardBody>

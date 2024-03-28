@@ -14,6 +14,10 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Sendotp from "./componants/componat_2/Sendotp";
 import Forgetpassword from "./componants/componat_2/Forgetpassword";
+import DraftPost from "./componants/post/DraftPost";
+import Post from "./componants/post/Post";
+import Postpage from "./componants/post/Postpage";
+import Postpageupdate from "./componants/post/Postpageupdate";
 
 
 
@@ -34,6 +38,11 @@ function App() {
         <Route  path="/addpost"  element={<AddPost />} />
         <Route  path="/verify_otp"  element={<Sendotp />} />
         <Route  path="/forgotPassword"  element={<Forgetpassword />} />
+        <Route  path="/draftPost" element={<DraftPost/>} />
+        <Route  path="/post" element={<Post/>} />
+        <Route  path="/postpage/:id" element={<Postpage/>} />
+        <Route  path="/postpageupdate/:id" element={<Postpageupdate/>} />
+        {/* <Route  path={`/postpage/${curElem._id}`} element={<Postpage/>} /> */}
        
       </Routes>
     </BrowserRouter>

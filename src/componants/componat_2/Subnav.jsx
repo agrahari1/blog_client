@@ -16,13 +16,13 @@ export default function Subnav() {
             </Link>
           </li>
           <li>
-            <Link className="news" to="/addpost">Blog</Link>
+            <Link className="news" to="/addpost">Add Artical</Link>
           </li>
           <li>
-            <Link className="contact" to="/contact">Contact</Link>
+            <Link className="contact" to="/draftPost">Draft Articals</Link>
           </li>
           <li >
-            <Link className="about" to="/about">About</Link>
+            <Link className="about" to="/post">Post</Link>
           </li>
         </ul>
 

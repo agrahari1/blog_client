@@ -36,7 +36,7 @@ export default function Navbarr() {
               />
               <Button variant="outline-success rounded ml-3">
                 <Link to="/signup" className="text-dark" >
-                  Signup
+                  Signup/Login
                 </Link>
               </Button>
             </Form>

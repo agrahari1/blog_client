@@ -39,10 +39,13 @@ export default function Register() {
       event.preventDefault();
       const names = data?.name?.split(" ");
       const payload = {
-        // fname: names?.[0] ?? "",
+        name: names?.[0] ?? "",
         name: names?.[0] ?? "",
         email: data?.email,
         password: data?.password,
+        // name:data.name,
+        // email:data.email,
+        // password:data.password
       };
 
       const res = await axios.post("http://localhost:5000/signup", payload);
@@ -58,10 +61,6 @@ export default function Register() {
       toast.error(error?.response?.data?.message);
     }
   };
-  //handle error in proper way
-
-  // };
-
   const resetForm = () => {
     setData({
       name: "",
